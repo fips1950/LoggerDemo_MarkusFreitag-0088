@@ -59,7 +59,7 @@ namespace LoggerDemo
         {
           do
           {
-            if (!signalStopCheck.WaitOne(Logger.CheckIntervalHours * 3600000)) break;
+            if (signalStopCheck.WaitOne(Logger.CheckIntervalHours * 3600000)) break;
             if (new FileInfo(this._fileName).Length > Logger.MaxLogLength) CloseWriter();
             if (this._lastDeleteDate < DateTime.Now.Date)
             {
